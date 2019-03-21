@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Persona } from '../Persona';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SubjectService } from '../subject.service';
+
 
 @Component({
   selector: 'app-main',
@@ -11,28 +13,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class MainComponent implements OnInit {
 
   @Input() name: string;
-  public realUsers:Array<Persona>;
-  public myName:string;
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'why-are-you-running'
-    })
-  };
+  public realUsers:Array<Persona> = [];
 
-  constructor(private http: HttpClient) {  }
+  constructor(private subject:SubjectService) {  }
 
   ngOnInit() {
-    this.getUsuarios()
+    this.subject.getUsuarios();
+    this.subject.mySubject.subscribe((value) => {
+      this.realUsers = value;
+    });
+
+
   }
 
-  getUsuarios():void{
-    this.http.get<Persona[]>('https://jsonplaceholder.typicode.com/todos').subscribe(data=>{//(data:Persona) => {
-      
-      //COM A ARRAY DE PERSONES SENSE LLIBRERIES
-      this.realUsers = data;
-      console.log();
-    
-    });
-  }
+  
+
+  
 }
