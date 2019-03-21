@@ -3,19 +3,15 @@ import { Persona } from '../Persona';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SubjectService } from '../subject.service';
 
-
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-sub',
+  templateUrl: './sub.component.html',
+  styleUrls: ['./sub.component.css']
 })
+export class SubComponent implements OnInit {
 
-export class MainComponent implements OnInit {
-
-  @Input() name: string;
   public realUsers:Array<Persona> = [];
-
-  constructor(private subject:SubjectService) {  }
+  constructor(private subject:SubjectService) { }
 
   ngOnInit() {
     this.subject.getUsuarios();
@@ -23,4 +19,5 @@ export class MainComponent implements OnInit {
       this.realUsers = value;
     });
   }
+
 }
