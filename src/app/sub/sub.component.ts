@@ -10,7 +10,7 @@ import { SubjectService } from '../subject.service';
 })
 export class SubComponent implements OnInit {
 
-  public realUsers:Array<Persona> = [];
+  public realUsers:Persona;
   constructor(private subject:SubjectService) { }
 
   ngOnInit() {

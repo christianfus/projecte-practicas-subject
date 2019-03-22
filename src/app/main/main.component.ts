@@ -13,7 +13,7 @@ import { SubjectService } from '../subject.service';
 export class MainComponent implements OnInit {
 
   @Input() name: string;
-  public realUsers:Array<Persona> = [];
+  public realUsers:Persona;
 
   constructor(private subject:SubjectService) {  }
 
