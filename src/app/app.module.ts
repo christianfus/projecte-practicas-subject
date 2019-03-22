@@ -14,6 +14,6 @@ import { SubComponent } from './sub/sub.component';
   imports:      [ BrowserModule, FormsModule, HttpClientModule ],
   declarations: [ AppComponent, MainComponent, FooterComponent, SubComponent ],
   bootstrap:    [ AppComponent ],
-  providers: [SubjectService]
+  providers: [ SubjectService ]
 })
 export class AppModule {  }

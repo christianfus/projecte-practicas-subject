@@ -10,14 +10,16 @@ import { SubjectService } from '../subject.service';
 })
 export class SubComponent implements OnInit {
 
-  public realUsers:Persona;
-  constructor(private subject:SubjectService) { }
+  public realUser:Persona;
+  constructor(private emisor:SubjectService) { }
 
   ngOnInit() {
-    this.subject.getUsuarios();
-    this.subject.mySubject.subscribe((value) => {
-      this.realUsers = value;
+    this.emisor.mySubject$.subscribe((value:Persona) => {
+      this.realUser = value;
     });
   }
 
+  public enviaVals(id:number):void{
+    this.emisor.getUsuarios(id);
+  }
 }

@@ -11,16 +11,18 @@ import { SubjectService } from '../subject.service';
 })
 
 export class MainComponent implements OnInit {
+  public realUser:Persona;
 
-  @Input() name: string;
-  public realUsers:Persona;
-
-  constructor(private subject:SubjectService) {  }
+  constructor(private emisor:SubjectService) {  }
 
   ngOnInit() {
-    this.subject.getUsuarios();
-    this.subject.mySubject.subscribe((value) => {
-      this.realUsers = value;
+    
+    this.emisor.mySubject$.subscribe((value:Persona) => {
+      this.realUser = value;
     });
+  }
+
+  public enviaVals(id:number):void{
+    this.emisor.getUsuarios(id);
   }
 }
